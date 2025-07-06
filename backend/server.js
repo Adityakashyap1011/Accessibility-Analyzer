@@ -2,7 +2,7 @@ const express=require("express");
 const cors = require('cors');
 const { readFileSync } = require('fs');
 const puppeteer = require('puppeteer');
-
+const PDFDocument = require('pdfkit');
 
 
 const app=express();
@@ -38,7 +38,41 @@ app.post("/analyze",async(req,res)=>{
     }
 })
 
+app.post("/report",(req,res)=>{
+    const {results ,url} =req.body;
 
+    if (!results) {
+        return res.status(400).json({ error: 'Missing results' });
+    }
+    if (!url) {
+        return res.status(400).json({ error: 'Missing URL' });
+    }
+    const doc = new PDFDocument();
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="accessibility-report.pdf"');
+    doc.pipe(res);
+
+    doc.fontSize(20).text('Accessibility Audit Report', { align: 'center' });
+    doc.moveDown();
+    doc.fontSize(14).text(`Scanned URL: ${url}`);
+    doc.moveDown();
+
+  if (results.violations.length === 0) {
+    doc.text('✅ No accessibility violations found.');
+  } else {
+    results.violations.forEach((issue, index) => {
+      doc.moveDown().fontSize(12).fillColor('red').text(`Issue ${index + 1}: ${issue.help}`);
+      doc.font('Helvetica').fillColor('black');
+      doc.text(`Impact: ${issue.impact}`);
+      doc.text(`Description: ${issue.description}`);
+      if (issue.nodes && issue.nodes.length > 0) {
+        doc.text(`Affected Element: ${issue.nodes[0].html}`);
+      }
+    });
+  }
+
+  doc.end();
+})
 
 
 app.listen(port,()=>{

@@ -20,7 +20,6 @@ const Results = () => {
   const {results, url} = state;
 
     const calculateScore = (violations) => {
-    console.log(url);
     const weights = { minor: 1, moderate: 2, serious: 4, critical: 6 };
     let Penalty = 0;
     violations.forEach(v => {
