@@ -16,7 +16,7 @@ const Home = () => {
       
       try{
         const response= await axios.post("http://localhost:3000/analyze",{url});
-        navigate("/results", { state: { results: response.data} });
+        navigate("/results", { state: { results: response.data ,url :url} });
       }
       catch(error){
         console.log(error);

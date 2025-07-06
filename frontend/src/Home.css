@@ -14,7 +14,7 @@ body, .home {
   min-height: 100vh;
 }
 
-/* Main Title */
+
 h1 {
   font-size: 2.8rem;
   font-weight: 600;
@@ -45,7 +45,7 @@ h1 {
 }
 
 
-/* Subheading or Description */
+
 h2 {
   color: #f0f6fc;
   font-size: 1.6rem;
@@ -59,7 +59,7 @@ p {
   line-height: 1.5;
 }
 
-/* Input box */
+
 input {
   padding: 12px 18px;
   margin: 25px 0 15px;
@@ -77,7 +77,7 @@ input:focus {
   border-color: #58a6ff;
 }
 
-/* Buttons */
+
 button {
   padding: 12px 28px;
   border: none;
@@ -95,25 +95,30 @@ button:hover {
   background-color: #da3633;
 }
 
-/* Error message */
+
 .error {
   color: #ff7b72;
   margin-top: 10px;
   font-weight: 500;
 }
 
-/* Results container */
-.results {
-  margin-top: 40px;
-  width: 80%;
-  max-width: 850px;
-  padding: 30px;
-  background-color: #161b22;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.03);
+
+.results-container {
+  text-align: center;
+  color: #e5e5e5;
+  margin-top: 30px;
 }
 
-/* Violations */
+/* Header text */
+.results-url {
+  font-size: 1.3rem;
+  font-weight: 600;
+  word-break: break-word;
+  max-width: 80%;
+  margin: 0 auto 20px;
+}
+
+
 .violation {
   margin: 20px 0;
   padding: 16px;
@@ -146,7 +151,7 @@ button:hover {
 }
 
 
-/* Fade-in animation */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -158,12 +163,12 @@ button:hover {
   }
 }
 
-/* Slide in from bottom for results container */
+
 .results {
   animation: fadeInUp 0.8s ease forwards;
 }
 
-/* Animate each violation with slight delay */
+
 .violation {
   opacity: 0;
   transform: translateY(20px);
@@ -171,7 +176,6 @@ button:hover {
   animation-delay: 0.3s;
 }
 
-/* Button hover pop effect */
 button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
