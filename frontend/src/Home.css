@@ -23,6 +23,13 @@ h1 {
   letter-spacing: 1px;
 }
 
+.description {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+
 .shiny-heading {
   font-size: 3rem;
   font-weight: 700;
@@ -79,20 +86,41 @@ input:focus {
 
 
 button {
-  padding: 12px 28px;
+  margin-top: 20px;
+  padding: 12px 26px;
+  background-color: #ff4d4f;
   border: none;
-  background-color: #f85149;
-  color: #ffffff;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
+
 button:hover {
-  background-color: #da3633;
+  background-color: #ff6b6d;
+}
+
+.samples {
+  margin-top: 50px;
+  color: #aaa;
+}
+
+.samples button {
+  margin: 0 5px;
+  background: none;
+  color: #00ccff;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.samples button:hover {
+  border-color: #58a6ff;
+  transform: scale(1.1);
 }
 
 
@@ -163,6 +191,13 @@ button:hover {
   }
 }
 
+@media (max-width: 480px) {
+  .shiny-heading { font-size: 1.8rem; }
+  .description  { font-size: 1rem;  }
+  button        { width: 80%; }
+}
+
+
 
 .results {
   animation: fadeInUp 0.8s ease forwards;
@@ -180,7 +215,10 @@ button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #da3633;
-  transform: scale(1.05);
+footer {
+  position: fixed;
+  bottom: 0;     
+  left: 0;
+  width: 100%;  
+  margin: 0;    
 }
